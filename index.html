@@ -6,11 +6,30 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>To do list</title>
     <link rel="stylesheet" href="assets/css/style.css">
+    <script src="https://kit.fontawesome.com/7717c3565e.js" crossorigin="anonymous"></script>
 </head>
 
 <body>
-    
+    <section class="container">
+        <div class="bg-red pad-50">
+            <h1 class="text-center text-white">My To Do List</h1>
+            <div class="row mg-y-30">
+                <input type="text" placeholder="Title..." id="input" class="w-70/100">
+                <button class="addBtn w-30/100 hover-color-white hover-bg-yellow">Add</button>
+            </div>
+            <div class="row gap-20">
+                <button id="filter" class="icon"><i class="fa-solid fa-sort-down"></i></button>
+                <button id="trashAll" class="icon none"><i class="fa-solid fa-trash"></i></button>
+            </div>
+        </div>
+        <ul id="myList">
+            <li class="checked">123 <button class="close">x</button></li>
+            <li>456 <button class="close">x</button></li>
+            <li>678 <button class="close">x</button></li>
+        </ul>
+    </section>
     <script src="assets/js/main.js"></script>
+
 </body>
 
 </html>
