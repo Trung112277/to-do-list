@@ -59,6 +59,10 @@ li {
     position: relative;
 }
 
+li:nth-child(odd) {
+    background-color: var(--color-grey-6);
+}
+
 li:hover {
     background-color: var(--color-grey-3);
 }
@@ -160,6 +164,8 @@ input {
     background-color: var(--yellow);
 }
 
+
+
 .close {
     padding: 0;
     background-color: transparent;
@@ -176,7 +182,7 @@ input {
     color: var(--white);
 }
 
-.checked {
+li.checked {
     color: var(--white);
     text-decoration: line-through;
     background-color: var(--color-grey-2);
