@@ -16,6 +16,12 @@ const isValidInput = (inputValue) => {
 const showError = (message) => {
     alert(message);
 };
+// Sự kiện nhấn enter
+const handleKeyPress = (event) => {
+    if (event.key === 'Enter') {
+        addItemToList();
+    }
+};
 
 // Thêm item vào đầu danh sách
 const addItemToList = () => {
@@ -55,7 +61,10 @@ const deleteListItem = (event) => {
 // Gắn sự kiện cho nút Add
 const setupAddButton = () => {
     const addButton = document.querySelector('.addBtn');
+    const inputElement = document.getElementById('input');
+
     addButton.addEventListener('click', addItemToList);
+    inputElement.addEventListener('keypress', handleKeyPress); // nhấn enter để add
 };
 // Gắn sự kiện delegate cho toàn bộ list
 const setupListClickEvent = () => {
