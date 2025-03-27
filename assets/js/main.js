@@ -19,6 +19,7 @@ const showError = (message) => {
 // Sự kiện nhấn enter
 const handleKeyPress = (event) => {
     if (event.key === 'Enter') {
+        event.preventDefault();
         addItemToList();
     }
 };
@@ -83,6 +84,26 @@ const deleteCheckedItems = () => {
     updateTrashButtonVisibility();
 };
 
+// Chọn/bỏ chọn tất cả các item
+const toggleAllItems = () => {
+    const allItems = document.querySelectorAll('#myList li');
+    const selectAllBtn = document.getElementById('selectAll');
+
+    // Kiểm tra nếu tất cả đã được chọn thì bỏ chọn, ngược lại chọn hết
+    const allChecked = [...allItems].every(item => item.classList.contains('checked'));
+
+    allItems.forEach(item => {
+        if (allChecked) {
+            item.classList.remove('checked');
+        } else {
+            item.classList.add('checked');
+        }
+    });
+
+    // Cập nhật trạng thái nút trash
+    updateTrashButtonVisibility();
+};
+
 // Gắn sự kiện click cho nút trash
 const setupTrashButton = () => {
     const trashBtn = document.getElementById('trashAll');
@@ -112,6 +133,11 @@ const setupDeleteEvent = () => {
     listElement.addEventListener('click', deleteListItem);
 };
 
+// Gắn sự kiện cho nút selectAll
+const setupSelectAllButton = () => {
+    const selectAllBtn = document.getElementById('selectAll');
+    selectAllBtn.addEventListener('click', toggleAllItems);
+};
 
 // Khởi tạo ứng dụng
 const initApp = () => {
@@ -119,6 +145,7 @@ const initApp = () => {
     setupListClickEvent();
     setupDeleteEvent();
     setupTrashButton();
+    setupSelectAllButton();
 };
 
 // Chạy ứng dụng khi DOM tải xong
