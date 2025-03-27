@@ -41,9 +41,9 @@ const addItemToList = () => {
 
 // Thêm/xóa class checked khi click vào item
 const toggleCheckedClass = (event) => {
-    // Chỉ xử lý khi click vào thẻ li (không phải nút close)
     if (event.target.tagName === 'LI') {
         event.target.classList.toggle('checked');
+        updateTrashButtonVisibility();
     }
 };
 
@@ -56,6 +56,40 @@ const deleteListItem = (event) => {
             listItem.remove();
         }
     }
+};
+
+// Kiểm tra và cập nhật trạng thái nút trash
+const updateTrashButtonVisibility = () => {
+    const trashBtn = document.getElementById('trashAll');
+    const checkedItems = document.querySelectorAll('#myList li.checked');
+
+    // Hiển thị nút trash nếu có từ 2 item checked trở lên
+    if (checkedItems.length >= 2) {
+        trashBtn.style.display = 'block';
+    } else {
+        trashBtn.style.display = 'none';
+    }
+};
+
+// Xóa tất cả item đã checked
+const deleteCheckedItems = () => {
+    const checkedItems = document.querySelectorAll('#myList li.checked');
+
+    checkedItems.forEach(item => {
+        item.remove();
+    });
+
+    // Sau khi xóa cập nhật lại trạng thái nút trash
+    updateTrashButtonVisibility();
+};
+
+// Gắn sự kiện click cho nút trash
+const setupTrashButton = () => {
+    const trashBtn = document.getElementById('trashAll');
+    trashBtn.addEventListener('click', deleteCheckedItems);
+
+    // Ẩn nút trash ban đầu
+    trashBtn.style.display = 'none';
 };
 
 // Gắn sự kiện cho nút Add
@@ -84,6 +118,7 @@ const initApp = () => {
     setupAddButton();
     setupListClickEvent();
     setupDeleteEvent();
+    setupTrashButton();
 };
 
 // Chạy ứng dụng khi DOM tải xong
