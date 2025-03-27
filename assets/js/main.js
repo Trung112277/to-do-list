@@ -40,9 +40,24 @@ const setupAddButton = () => {
     addButton.addEventListener('click', addItemToList);
 };
 
+// Thêm/xóa class checked khi click vào item
+const toggleCheckedClass = (event) => {
+    // Chỉ xử lý khi click vào thẻ li (không phải nút close)
+    if (event.target.tagName === 'LI') {
+        event.target.classList.toggle('checked');
+    }
+};
+
+// Gắn sự kiện delegate cho toàn bộ list
+const setupListClickEvent = () => {
+    const listElement = document.getElementById('myList');
+    listElement.addEventListener('click', toggleCheckedClass);
+};
+
 // Khởi tạo ứng dụng
 const initApp = () => {
     setupAddButton();
+    setupListClickEvent();
 };
 
 // Chạy ứng dụng khi DOM tải xong
