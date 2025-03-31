@@ -15,19 +15,49 @@
             <h1 class="text-center text-white">My To Do List</h1>
             <div class="row mg-y-30">
                 <input type="text" placeholder="Title..." id="input" class="w-70/100">
-                <button class="addBtn w-30/100 hover-color-white hover-bg-yellow">Add</button>
+                <button class="addBtn w-30/100  hover-bg-yellow">Add</button>
             </div>
-            <div class="row gap-20">
-                <button id="filter" class="icon"><i class="fa-solid fa-sort-down"></i></button>
-                <button id="selectAll" class="icon"><i class="fa-solid fa-list"></i></button>
-                <button id="trashAll" class="icon"><i class="fa-solid fa-trash"></i></button>
+            <div class="row-between">
+                <div class="row gap-20 w-fit min-h-50">
+                    <button id="selectAll" class="icon border"><i class="fa-solid fa-list"></i></button>
+                    <button id="trashAll" class="icon border"><i class="fa-solid fa-trash"></i></button>
+                </div>
+                <div class="row gap-20 w-fit min-h-50">
+                    <button id="filter" class="icon border"><i class="fa-solid fa-sort-down"></i></button>
+                    <select name="status" id="status" class="min-h-50 border">
+                        <option value="chua-hoan-thanh" selected>Chưa hoàn thành</option>
+                        <option value="hoan-thanh">Hoàn thành</option>
+                    </select>
+                    <select name="priority" id="priority" class="min-h-50 border">
+                        <option value="cao">Cao</option>
+                        <option value="vua" selected>Vừa</option>
+                        <option value="thap">Thấp</option>
+                    </select>
+                </div>
             </div>
         </div>
         <ul id="myList">
-            <li>Một bước yêu, vạn dặm đau<button class="close">x</button></li>
-            <li>Day Dứt Nỗi Đau<button class="close">x</button></li>
-            <li>Lắng Nghe Nước Mắt<button class="close">x</button></li>
-            <li>Tìm được nhau khó thế nào<button class="close">x</button></li>
+            <li class="checked">
+                <input type="checkbox" id="check" hidden>
+                <p>
+                    Một bước yêu, vạn dặm đau
+                </p>
+                <div class="btn-box gap-10">
+                    <select name="status" id="status-list">
+                        <option value="chua-hoan-thanh" selected>Chưa hoàn thành</option>
+                        <option value="hoan-thanh">Hoàn thành</option>
+                    </select>
+                    <select name="priority" id="priority-list">
+                        <option value="cao">Cao</option>
+                        <option value="vua" selected>Vừa</option>
+                        <option value="thap">Thấp</option>
+                    </select>
+                    <div class="flex">
+                        <button class="btn change">Sửa</button>
+                        <button class="btn close">x</button>
+                    </div>
+                </div>
+            </li>
         </ul>
     </section>
     <script src="assets/js/main.js"></script>
