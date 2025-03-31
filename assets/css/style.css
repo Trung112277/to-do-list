@@ -147,6 +147,11 @@ option[value="thap"] {
     align-items: center;
 }
 
+.col {
+    display: flex;
+    flex-direction: column;
+}
+
 .row-between {
     display: flex;
     align-items: center;
@@ -247,7 +252,7 @@ option[value="thap"] {
 }
 
 .close:hover {
-    background-color: var(--primary-color);
+    background-color: var(--color-red);
     color: var(--white);
 }
 
